@@ -1,0 +1,39 @@
+from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route('/result')
+def result():
+   dict = {'phy':50,'che':60,'maths':70}
+   return render_template('result.html', result = dict)
+
+@app.route('/')
+def index():
+    return "I am python developer.Due to shortage of time i cannot make flask application ."
+
+
+
+
+
+
+if __name__ == '__main__':
+   app.run(host= "127.0.0.1", debug = True, port="5000")
+
+
+# html code 
+<!doctype html>
+<html>
+   <body>
+   <link ... href="{{ url_for('static', filename='static/style.css') }}" />
+      <table border = 1>
+         {% for key, value in result.iteritems() %}
+
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+
+         {% endfor %}
+      </table>
+  <img src="https://bit.ly/fcc-running-cats" class="img-responsive" alt="Three kittens running towards the camera. ">
+   </body>
+</html>
